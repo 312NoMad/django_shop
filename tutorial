@@ -1,0 +1,92 @@
+1. Создать и активвировать виртуальное окружение если его нет
+    MacOS/Linux
+    python3 -m venv .venv
+    . .venv/bin/activate
+
+    Windows
+    python -m venv .venv
+    .venv\Scripts
+
+2. Скачать Django командой:
+    pip install django djangorestframework
+
+    Либо скачать из файла
+    pip install -r requirements.txt
+
+
+3. Содать папку проекта:
+    django-admin startproject <project-name> .
+
+
+4. Запустить проект:
+    python manage.py runserver
+
+
+5. Применить миграции:
+    python manage.py migrate
+
+
+6. Создать приложение:
+    python manage.py startapp product
+
+
+7. Создать суперюзера:
+    python manage.py createsuperuser
+
+
+
+Работа с приложением
+
+1. Создать модель в models.py
+
+2. Создать миграции:
+    python manage.py makemigrations
+
+3. Применить миграции:
+    python manage.py migrate
+
+4. Добавть в админку. Добавить модели в файле admin.py
+
+5. Написать сераилайзеры для моделей в файле serializers.py
+
+6. Написать views в файле views.py
+
+7. Создать файл urls.py в папке приложения. Добавить туда все views.
+
+8. В файле Project.urls добавть ссылку на app.urls
+
+9. Запустить сервер и проверить эндпоинты
+
+
+
+Objects
+
+Model.objects.all() -   Получение всех записей
+
+Model.objects.get() -   Получение одной записи
+
+Model.objects.filter()  -   Получение записей по условию
+
+
+Model.objects.filter(price=100)
+Model.objects.filter(price__lt=100)
+Model.objects.filter(price__gt=100)
+Model.objects.filter(price__lte=100)
+Model.objects.filter(price__gte=100)
+Model.objects.filter(id__in=[1,2,3])
+Model.objects.filter(name='some name')
+Model.objects.filter(name__iexact='SomE name')
+Model.objects.filter(name__contains='some')
+Model.objects.filter(name__icontains='some)
+Model.objects.filter(price__ne=100)
+Model.objects.filter(description__isnull=True)
+
+Model.objects.filter(Q(name='iPhone') & Q(price=100))
+Model.objects.filter(Q(name='iPhone') | Q(price=100))
+
+
+Model.objects.create(name='', price=100, description='')
+
+Model.objects.delete()
+
+Model.objects.update()
